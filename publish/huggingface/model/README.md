@@ -75,6 +75,9 @@ fine-tuned on the risks that [Kindynos](https://github.com/6MicheleStingo9/kindy
 assessment tool, writes from a questionnaire about an AI system. It reads English and Italian and runs
 on a CPU, in about 2 seconds per risk on a laptop. The same model is on [Kaggle](https://www.kaggle.com/models/michelestingo/laya-kindynos-causal).
 
+**Try it** in the [demo](https://huggingface.co/spaces/MicheleStingo/laya-kindynos-causal): describe a risk, or pick one
+that Kindynos wrote, and see its causes with their probabilities.
+
 Results on the Kindynos test set, 145 risks in English and Italian whose labels were verified by a human
 annotator (95% bootstrap intervals):
 

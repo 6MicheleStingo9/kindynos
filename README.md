@@ -82,8 +82,9 @@ More in [docs/how-it-works.md](docs/how-it-works.md).
 The causal labels come from **laya-kindynos-causal**,
 [Laya-multilingual](https://huggingface.co/convaiinnovations/laya-multilingual) fine-tuned on the MIT AI
 Risk Repository and on risks written by Kindynos. On 145 test risks whose labels a person verified, it
-gets the entity right 88% of the time, the intent 77% and the timing 95%. Model, data and training are
-public:
+gets the entity right 88% of the time, the intent 77% and the timing 95%. You can
+[try it in the browser](https://huggingface.co/spaces/MicheleStingo/laya-kindynos-causal), on a risk of your
+own. Model, data and training are public:
 
 | | Hugging Face | Kaggle |
 |---|---|---|
