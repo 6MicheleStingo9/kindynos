@@ -1,4 +1,6 @@
-/* The Kindynos look (frontend/ui/src/styles/tokens.css): Gradio sets .dark on the page in the dark theme */
+/* The Kindynos look (frontend/ui/src/styles/tokens.css): Gradio sets .dark on the page in the dark theme.
+   Every rule starts with .gradio-container, so that it wins over the reset of Gradio, which a Space loads after
+   this file (at the same specificity, the later rule would win). */
 :root {
   --k-ink: #132747;
   --k-ink-muted: #46536b;
@@ -33,7 +35,7 @@
 }
 
 /* Header */
-.masthead {
+.gradio-container .masthead {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -43,34 +45,34 @@
   border-bottom: 1px solid var(--k-line);
 }
 
-.masthead .brand {
+.gradio-container .masthead .brand {
   display: inline-flex;
   border-radius: 8px;
 }
 
-.masthead .wordmark {
+.gradio-container .masthead .wordmark {
   height: 34px;
   width: auto;
 }
 
-.masthead .wordmark.dark,
-.dark .masthead .wordmark.light {
+.gradio-container .masthead .wordmark.dark,
+.dark .gradio-container .masthead .wordmark.light {
   display: none;
 }
 
-.dark .masthead .wordmark.dark {
+.dark .gradio-container .masthead .wordmark.dark {
   display: block;
 }
 
-.masthead nav {
+.gradio-container .masthead nav {
   display: flex;
   flex-wrap: wrap;
   gap: 4px 20px;
 }
 
-.masthead nav a,
-.colophon a,
-.hero .lead a {
+.gradio-container .masthead nav a,
+.gradio-container .colophon a,
+.gradio-container .hero .lead a {
   margin: 0 !important;
   padding: 0 !important;
   color: var(--k-ink) !important;
@@ -80,7 +82,7 @@
   text-underline-offset: 3px;
 }
 
-.hero {
+.gradio-container .hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -88,7 +90,7 @@
   padding: 28px 0 12px;
 }
 
-.hero .eyebrow {
+.gradio-container .hero .eyebrow {
   margin: 0 0 6px;
   color: var(--k-ink-subtle);
   font-size: 0.8rem;
@@ -97,7 +99,7 @@
   text-transform: uppercase;
 }
 
-.hero h1 {
+.gradio-container .hero h1 {
   margin: 0 0 12px;
   color: var(--k-ink);
   font-family: var(--k-display);
@@ -108,7 +110,7 @@
   text-wrap: balance;
 }
 
-.hero .lead {
+.gradio-container .hero .lead {
   max-width: 62ch;
   margin: 0;
   color: var(--k-ink-muted);
@@ -116,7 +118,7 @@
   line-height: 1.6;
 }
 
-.hero .owl {
+.gradio-container .hero .owl {
   flex: none;
   width: 112px;
   height: 112px;
@@ -125,13 +127,13 @@
 }
 
 /* The causes of the risk, one card per axis */
-.causes {
+.gradio-container .causes {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.causes.empty {
+.gradio-container .causes.empty {
   justify-content: center;
   min-height: 240px;
   padding: 24px;
@@ -141,18 +143,18 @@
   text-align: center;
 }
 
-.cause {
+.gradio-container .cause {
   padding: 16px 20px 18px;
   border: 1px solid var(--k-line);
   border-radius: 16px;
   background: var(--k-surface);
 }
 
-.cause p {
+.gradio-container .cause p {
   margin: 0;
 }
 
-.cause .axis {
+.gradio-container .cause .axis {
   color: var(--k-ink-subtle);
   font-size: 0.78rem;
   font-weight: 600;
@@ -160,13 +162,13 @@
   text-transform: uppercase;
 }
 
-.cause .question {
+.gradio-container .cause .question {
   margin-top: 2px;
   color: var(--k-ink-subtle);
   font-size: 0.85rem;
 }
 
-.cause .value {
+.gradio-container .cause .value {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -179,28 +181,28 @@
   line-height: 1.2;
 }
 
-.cause .dot {
+.gradio-container .cause .dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
 }
 
-.cause .dot.ai {
+.gradio-container .cause .dot.ai {
   background: var(--k-ai);
 }
 
-.cause .dot.human {
+.gradio-container .cause .dot.human {
   background: var(--k-human);
 }
 
-.cause .definition {
+.gradio-container .cause .definition {
   margin-top: 4px;
   color: var(--k-ink-muted);
   font-size: 0.92rem;
   line-height: 1.5;
 }
 
-.cause .shares {
+.gradio-container .cause .shares {
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -210,7 +212,7 @@
   list-style: none;
 }
 
-.cause .shares li {
+.gradio-container .cause .shares li {
   display: grid;
   grid-template-columns: minmax(7.5rem, auto) 1fr 3rem;
   align-items: center;
@@ -222,35 +224,35 @@
   font-variant-numeric: tabular-nums;
 }
 
-.cause .shares li.chosen {
+.gradio-container .cause .shares li.chosen {
   color: var(--k-ink);
   font-weight: 600;
 }
 
-.cause .track {
+.gradio-container .cause .track {
   height: 8px;
   overflow: hidden;
   border-radius: 999px;
   background: var(--k-track);
 }
 
-.cause .fill {
+.gradio-container .cause .fill {
   display: block;
   height: 100%;
   border-radius: 999px;
   background: var(--k-fill-other);
 }
 
-.cause .chosen .fill {
+.gradio-container .cause .chosen .fill {
   background: var(--k-fill);
 }
 
-.cause .share {
+.gradio-container .cause .share {
   text-align: right;
 }
 
 /* Footer */
-.colophon {
+.gradio-container .colophon {
   margin-top: 8px;
   padding-top: 16px;
   border-top: 1px solid var(--k-line);
@@ -259,24 +261,24 @@
   line-height: 1.6;
 }
 
-.colophon p {
+.gradio-container .colophon p {
   margin: 0 0 6px;
 }
 
 @media (max-width: 640px) {
-  .hero {
+  .gradio-container .hero {
     flex-direction: column-reverse;
     align-items: flex-start;
     gap: 16px;
   }
 
-  .hero .owl {
+  .gradio-container .hero .owl {
     width: 64px;
     height: 64px;
     border-radius: 14px;
   }
 
-  .cause .shares li {
+  .gradio-container .cause .shares li {
     grid-template-columns: minmax(6.5rem, auto) 1fr 2.75rem;
   }
 }

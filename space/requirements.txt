@@ -1,6 +1,6 @@
-# Gradio comes with the Space (sdk_version in README.md). PyTorch for CPU: the free hardware has no GPU.
---extra-index-url https://download.pytorch.org/whl/cpu
-torch==2.14.1+cpu
+# Gradio comes with the Space (sdk_version in README.md). PyTorch 2.13, the latest that ZeroGPU supports.
+torch==2.13.0
+spaces==0.51.3
 laya==0.4.1
 transformers==5.19.0
 huggingface_hub==2.2.0

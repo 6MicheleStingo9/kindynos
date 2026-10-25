@@ -4,6 +4,9 @@ when it occurs, along the three axes of the MIT Causal Taxonomy of AI Risks.
 The Space of MicheleStingo/laya-kindynos-causal on Hugging Face, published from space/ in the Kindynos
 repository. Laya reads the risk as Kindynos writes it (agents/causality_analyzer/laya_classifier.py):
 the subdomain, the title, the description; space/parity.py checks that both give the same labels.
+
+The Space runs on ZeroGPU: the model sits on the GPU from the start, and each prediction borrows the
+GPU for its few seconds (@spaces.GPU). Elsewhere, without a GPU, everything runs on the CPU.
 """
 
 import base64
@@ -11,8 +14,10 @@ import html
 import json
 from pathlib import Path
 
+import spaces  # first: on ZeroGPU it prepares PyTorch to lend the GPU
 import gradio as gr
 import laya
+import torch
 from huggingface_hub import hf_hub_download
 
 HERE = Path(__file__).parent
@@ -20,7 +25,7 @@ REPO, REVISION = "MicheleStingo/laya-kindynos-causal", "v1.0"
 AXES = ("entity", "intent", "timing")
 MAX_TEXT = 4000  # characters: a risk is a few sentences
 
-agent = laya.load(REPO, revision=REVISION)
+agent = laya.load(REPO, revision=REVISION, device="cuda" if torch.cuda.is_available() else "cpu")
 with open(hf_hub_download(REPO, "questions.json", revision=REVISION), encoding="utf-8") as f:
     QUESTIONS = json.load(f)  # the three axes as typed questions, with the MIT definitions
 DATA = json.loads((HERE / "data.json").read_text(encoding="utf-8"))
@@ -45,6 +50,7 @@ def state(subdomain: str | None, title: str, text: str) -> str:
     return "\n".join(lines + ([title] if title else []) + [text])
 
 
+@spaces.GPU(duration=20)
 def predict(subdomain: str | None, title: str, text: str) -> dict:
     """{axis: {"value", "probabilities"}} for one risk."""
     answers = agent.predict(state(subdomain, title, text), QUESTIONS)["answers"]
@@ -108,7 +114,7 @@ HEADER = f"""
     <p class="lead">Describe an AI risk and Laya labels its causes along the three axes of the
     <a href="https://airisk.mit.edu/" target="_blank" rel="noopener">MIT Causal Taxonomy</a>: who or what
     causes it, whether the harm is intended, and when it occurs, with a calibrated probability for each value.
-    It reads English and Italian, and runs on a CPU.</p>
+    It reads English and Italian, and a laptop CPU is enough to run it.</p>
   </div>
   <img class="owl" src="{_data_uri(HERE / "assets" / "owl.png", "image/png")}" alt="">
 </section>
@@ -195,7 +201,7 @@ THEME = gr.themes.Base(
 CSS = (HERE / "style.css").read_text(encoding="utf-8")
 
 with gr.Blocks(title="Laya · who or what causes an AI risk") as demo:
-    gr.HTML(HEADER)
+    gr.HTML(HEADER, apply_default_css=False)  # only style.css: the default prose styles would win online
     with gr.Row(equal_height=False):
         with gr.Column(scale=5, min_width=320):
             subdomain = gr.Dropdown(
@@ -213,7 +219,7 @@ with gr.Blocks(title="Laya · who or what causes an AI risk") as demo:
             )
             run = gr.Button("Label the causes", variant="primary")
             # The examples under the button: in view on a desktop, before the results on a phone
-            causes = gr.HTML(EMPTY, render=False)
+            causes = gr.HTML(EMPTY, apply_default_css=False, render=False)
             answer = gr.JSON(label="Labels and probabilities", show_label=False, render=False)
             gr.Examples(
                 examples=[[e["subdomain"], e["title"], e["text"]] for e in DATA["examples"]],
@@ -230,7 +236,7 @@ with gr.Blocks(title="Laya · who or what causes an AI risk") as demo:
             causes.render()
             with gr.Accordion("As JSON", open=False):
                 answer.render()
-    gr.HTML(FOOTER)
+    gr.HTML(FOOTER, apply_default_css=False)
     run.click(label, inputs=[subdomain, title, text], outputs=[causes, answer], api_name="label")
 
 if __name__ == "__main__":

@@ -5,7 +5,7 @@ colorFrom: blue
 colorTo: yellow
 sdk: gradio
 sdk_version: 6.30.0
-python_version: "3.12"
+python_version: "3.12.12"
 app_file: app.py
 pinned: false
 license: apache-2.0
@@ -30,7 +30,8 @@ labels it along the three axes of the [MIT Causal Taxonomy of AI Risks](https://
 - **intent**: whether the harm is an expected or an unexpected outcome of pursuing a goal;
 - **timing**: whether it occurs before or after the AI system is deployed.
 
-Each value comes with a calibrated probability. The model reads English and Italian and runs on a CPU. It is
+Each value comes with a calibrated probability. The model reads English and Italian, and needs no more than a
+CPU; here it runs on ZeroGPU. It is
 [Laya-multilingual](https://huggingface.co/convaiinnovations/laya-multilingual) fine-tuned for
 [Kindynos](https://github.com/6MicheleStingo9/kindynos), an open-source tool that assesses the risks of an AI
 system from a questionnaire. The examples are risks that Kindynos wrote, from its test set.
