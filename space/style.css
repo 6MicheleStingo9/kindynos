@@ -1,0 +1,282 @@
+/* The Kindynos look (frontend/ui/src/styles/tokens.css): Gradio sets .dark on the page in the dark theme */
+:root {
+  --k-ink: #132747;
+  --k-ink-muted: #46536b;
+  --k-ink-subtle: #5d687e;
+  --k-surface: #ffffff;
+  --k-surface-muted: #efece3;
+  --k-line: #dfd9cb;
+  --k-track: #e9e5da;
+  --k-fill: #132747;
+  --k-fill-other: #7f889c;
+  --k-ai: #4b70b8;
+  --k-human: #edaa26;
+  --k-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+}
+
+.dark {
+  --k-ink: #f4ebd9;
+  --k-ink-muted: #c6cddb;
+  --k-ink-subtle: #9da8be;
+  --k-surface: #14213a;
+  --k-surface-muted: #1b2b48;
+  --k-line: #2b3d5e;
+  --k-track: #22324f;
+  --k-fill: #fae5b9;
+  --k-fill-other: #6b7c9e;
+  --k-ai: #8eaee3;
+}
+
+.gradio-container {
+  max-width: 1120px !important;
+  margin-inline: auto !important;
+}
+
+/* Header */
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding: 4px 0 18px;
+  border-bottom: 1px solid var(--k-line);
+}
+
+.masthead .brand {
+  display: inline-flex;
+  border-radius: 8px;
+}
+
+.masthead .wordmark {
+  height: 34px;
+  width: auto;
+}
+
+.masthead .wordmark.dark,
+.dark .masthead .wordmark.light {
+  display: none;
+}
+
+.dark .masthead .wordmark.dark {
+  display: block;
+}
+
+.masthead nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+}
+
+.masthead nav a,
+.colophon a,
+.hero .lead a {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: var(--k-ink) !important;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px 0 12px;
+}
+
+.hero .eyebrow {
+  margin: 0 0 6px;
+  color: var(--k-ink-subtle);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0 0 12px;
+  color: var(--k-ink);
+  font-family: var(--k-display);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 600;
+  font-variation-settings: 'SOFT' 50;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.hero .lead {
+  max-width: 62ch;
+  margin: 0;
+  color: var(--k-ink-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.hero .owl {
+  flex: none;
+  width: 112px;
+  height: 112px;
+  border-radius: 22px;
+  box-shadow: 0 6px 18px rgb(19 39 71 / 0.16);
+}
+
+/* The causes of the risk, one card per axis */
+.causes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.causes.empty {
+  justify-content: center;
+  min-height: 240px;
+  padding: 24px;
+  border: 1px dashed var(--k-line);
+  border-radius: 16px;
+  color: var(--k-ink-subtle);
+  text-align: center;
+}
+
+.cause {
+  padding: 16px 20px 18px;
+  border: 1px solid var(--k-line);
+  border-radius: 16px;
+  background: var(--k-surface);
+}
+
+.cause p {
+  margin: 0;
+}
+
+.cause .axis {
+  color: var(--k-ink-subtle);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cause .question {
+  margin-top: 2px;
+  color: var(--k-ink-subtle);
+  font-size: 0.85rem;
+}
+
+.cause .value {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  color: var(--k-ink);
+  font-family: var(--k-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  font-variation-settings: 'SOFT' 50;
+  line-height: 1.2;
+}
+
+.cause .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.cause .dot.ai {
+  background: var(--k-ai);
+}
+
+.cause .dot.human {
+  background: var(--k-human);
+}
+
+.cause .definition {
+  margin-top: 4px;
+  color: var(--k-ink-muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.cause .shares {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 14px 0 0;
+  padding: 12px 0 0;
+  border-top: 1px solid var(--k-line);
+  list-style: none;
+}
+
+.cause .shares li {
+  display: grid;
+  grid-template-columns: minmax(7.5rem, auto) 1fr 3rem;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  color: var(--k-ink-muted);
+  font-size: 0.88rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.cause .shares li.chosen {
+  color: var(--k-ink);
+  font-weight: 600;
+}
+
+.cause .track {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--k-track);
+}
+
+.cause .fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--k-fill-other);
+}
+
+.cause .chosen .fill {
+  background: var(--k-fill);
+}
+
+.cause .share {
+  text-align: right;
+}
+
+/* Footer */
+.colophon {
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--k-line);
+  color: var(--k-ink-subtle);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.colophon p {
+  margin: 0 0 6px;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .hero .owl {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+  }
+
+  .cause .shares li {
+    grid-template-columns: minmax(6.5rem, auto) 1fr 2.75rem;
+  }
+}

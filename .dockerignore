@@ -20,3 +20,6 @@ publish/build/
 frontend/node_modules/
 frontend/*/node_modules/
 frontend/*/dist/
+
+# The Hugging Face Space of the causal model: published on its own, not part of the app
+space/
