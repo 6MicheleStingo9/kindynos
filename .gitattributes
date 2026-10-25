@@ -1,0 +1,3 @@
+# The example report in files/reports is output of Kindynos, not source:
+# left in the language statistics, it makes HTML the main language.
+files/reports/*.html linguist-generated
