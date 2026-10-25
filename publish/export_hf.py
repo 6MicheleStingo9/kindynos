@@ -2,7 +2,8 @@
 Build the two Hugging Face repositories of Kindynos in publish/build/.
 
 - model/ (MicheleStingo/laya-kindynos-causal): the laya-causal-v4 checkpoint
-  (training/checkpoints/, not versioned), its card and Apache-2.0 license (publish/huggingface/model/),
+  (training/checkpoints/, not versioned), its card with the GIF of the demo and its Apache-2.0 license
+  (publish/huggingface/model/),
   the root config.json the Hub uses to recognise a Laya model, and eval/kindynos_test.json, the
   scored predictions on the test risks.
 - dataset/ (MicheleStingo/kindynos-causal-risks): its card (publish/huggingface/dataset/), the
@@ -179,7 +180,8 @@ def build_model(out: Path) -> None:
     for name in CHECKPOINT_FILES:
         (out / name).parent.mkdir(parents=True, exist_ok=True)
         shutil.copy(CHECKPOINT / name, out / name)
-    for name in ("README.md", "LICENSE", "config.json"):
+    for name in ("README.md", "LICENSE", "config.json", "assets/demo.gif"):
+        (out / name).parent.mkdir(parents=True, exist_ok=True)
         shutil.copy(CARDS / "model" / name, out / name)
     (out / "eval").mkdir(exist_ok=True)
     shutil.copy(TEST_RESULTS, out / "eval" / "kindynos_test.json")

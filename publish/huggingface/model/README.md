@@ -67,6 +67,8 @@ model-index:
 
 # laya-kindynos-causal
 
+[![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/resolve/main/open-in-hf-spaces-md.svg)](https://huggingface.co/spaces/MicheleStingo/laya-kindynos-causal)
+
 Who or what causes an AI risk, whether the harm is intended, and when it occurs: this model labels a
 written AI risk along the three axes of the [MIT Causal Taxonomy of AI Risks](https://airisk.mit.edu/),
 with a calibrated probability for each value. It is
@@ -77,6 +79,8 @@ on a CPU, in about 2 seconds per risk on a laptop. The same model is on [Kaggle]
 
 **Try it** in the [demo](https://huggingface.co/spaces/MicheleStingo/laya-kindynos-causal): describe a risk, or pick one
 that Kindynos wrote, and see its causes with their probabilities.
+
+[![The demo labels two risks that Kindynos wrote, one in English and one in Italian](https://huggingface.co/MicheleStingo/laya-kindynos-causal/resolve/main/assets/demo.gif)](https://huggingface.co/spaces/MicheleStingo/laya-kindynos-causal)
 
 Results on the Kindynos test set, 145 risks in English and Italian whose labels were verified by a human
 annotator (95% bootstrap intervals):
