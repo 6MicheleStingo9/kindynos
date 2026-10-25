@@ -126,6 +126,12 @@
   box-shadow: 0 6px 18px rgb(19 39 71 / 0.16);
 }
 
+/* A long subdomain name ends before the arrow of the menu */
+.gradio-container .wrap-inner .secondary-wrap input {
+  padding-right: 28px;
+  text-overflow: ellipsis;
+}
+
 /* The causes of the risk, one card per axis */
 .gradio-container .causes {
   display: flex;
